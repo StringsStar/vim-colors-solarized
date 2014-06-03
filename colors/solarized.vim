@@ -303,9 +303,10 @@ elseif g:solarized_termcolors == 256
     let s:base03      = "234"
     let s:base02      = "235"
     let s:base01      = "239"
-    let s:base00      = "240"
-    let s:base0       = "244"
-    let s:base1       = "245"
+    let s:base00      = "232"	"Normal
+    "let s:base0       = "244"
+	let s:base0		  = "255"
+    let s:base1       = "34"	"Comment
     let s:base2       = "187"
     let s:base3       = "230"
     let s:yellow      = "136"
@@ -316,6 +317,8 @@ elseif g:solarized_termcolors == 256
     let s:blue        = "33"
     let s:cyan        = "37"
     let s:green       = "64"
+	let s:pink		  = "199"
+	let s:purple	  = "5"
 else
     let s:vmode       = "cterm"
     let s:bright      = "* term=bold cterm=bold"
@@ -368,7 +371,8 @@ endif
 "}}}
 " Background value based on termtrans setting "{{{
 " ---------------------------------------------------------------------
-if (has("gui_running") || g:solarized_termtrans == 0)
+" if (has("gui_running") || g:solarized_termtrans == 0)
+if (has("gui_running") )
     let s:back        = s:base03
 else
     let s:back        = "NONE"
@@ -471,6 +475,8 @@ exe "let s:fg_magenta   = ' ".s:vmode."fg=".s:magenta."'"
 exe "let s:fg_violet    = ' ".s:vmode."fg=".s:violet ."'"
 exe "let s:fg_blue      = ' ".s:vmode."fg=".s:blue   ."'"
 exe "let s:fg_cyan      = ' ".s:vmode."fg=".s:cyan   ."'"
+exe	"let s:fg_pink		= ' ".s:vmode."fg=".s:pink	 ."'"
+exe	"let s:fg_purple	= ' ".s:vmode."fg=".s:purple ."'"
 
 exe "let s:fmt_none     = ' ".s:vmode."=NONE".          " term=NONE".    "'"
 exe "let s:fmt_bold     = ' ".s:vmode."=NONE".s:b.      " term=NONE".s:b."'"
@@ -553,7 +559,8 @@ exe "hi! Identifier"     .s:fmt_none   .s:fg_blue   .s:bg_none
 "       *Identifier      any variable name
 "        Function        function name (also: methods for classes)
 "
-exe "hi! Statement"      .s:fmt_none   .s:fg_green  .s:bg_none
+"exe "hi! Statement"      .s:fmt_none   .s:fg_green  .s:bg_none
+exe "hi! Statement"      .s:fmt_none   .s:fg_pink  .s:bg_none
 "       *Statement       any statement
 "        Conditional     if, then, else, endif, switch, etc.
 "        Repeat          for, do, while, etc.
@@ -615,10 +622,10 @@ exe "hi! Visual"         .s:fmt_none   .s:fg_base01 .s:bg_base03 .s:fmt_revbb
 exe "hi! Directory"      .s:fmt_none   .s:fg_blue   .s:bg_none
 exe "hi! ErrorMsg"       .s:fmt_revr   .s:fg_red    .s:bg_none
 exe "hi! IncSearch"      .s:fmt_stnd   .s:fg_orange .s:bg_none
-exe "hi! Search"         .s:fmt_revr   .s:fg_yellow .s:bg_none
+exe "hi! Search"         .s:fmt_revr   .s:fg_pink	.s:bg_none
 exe "hi! MoreMsg"        .s:fmt_none   .s:fg_blue   .s:bg_none
 exe "hi! ModeMsg"        .s:fmt_none   .s:fg_blue   .s:bg_none
-exe "hi! LineNr"         .s:fmt_none   .s:fg_base01 .s:bg_base02
+exe "hi! LineNr"         .s:fmt_none   .s:fg_base01 .s:bg_none
 exe "hi! Question"       .s:fmt_bold   .s:fg_cyan   .s:bg_none
 if ( has("gui_running") || &t_Co > 8 )
     exe "hi! VertSplit"  .s:fmt_none   .s:fg_base00 .s:bg_base00
